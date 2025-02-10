@@ -3,6 +3,8 @@
 #include <algorithm>
 using namespace std;
 
+#define MAX_T 5
+
 int n;
 vector<pair<int, int>> arr;
 
@@ -12,7 +14,7 @@ int main() {
 
     cin >> n;
 
-    arr.assign(n + 1, {0,0});
+    arr.assign(n + 2, {0,0});
     for (int i = 1; i <= n; i++)
     {
         int t, p;
@@ -20,22 +22,15 @@ int main() {
         arr[i] = {t, p};
     }
 
-    vector<int> dp(n + 2, 0);
+    vector<int> dp(n + MAX_T + 1, 0);
     int ans = 0;
-    for (int i = 2; i <= n + 1; i++)
+    for (int i = 1; i <= n + 1; i++)
     {
+        ans = max(ans, dp[i]);
         dp[i] = ans;
-        for (int j = i - 1; j >= 1; j--)
-        {
-            auto [t, p] = arr[j];
-            if (j + t == i)
-            {
-                dp[i] = max(dp[i], dp[j] + p);
-                ans = max(ans, dp[i]);
-            }
-        }
 
-        // cout << "dp[" << i << "]: " << dp[i] << endl;
+        auto [t, p] = arr[i];
+        dp[i + t] = max(dp[i + t], dp[i] + p);
     }
 
     cout << ans;
