@@ -17,11 +17,9 @@ int main() {
     dp[1] = 1;
     dp[2] = 2;
     for (int i = 3; i <= n; i++)
-    {
-        dp[i] = dp[i - 2] % MOD + dp[i - 1] % MOD;
-    }
+        dp[i] = (dp[i - 2] + dp[i - 1]) % MOD;
 
-    cout << dp[n] % MOD;
+    cout << dp[n];
 
     return 0;
 }
