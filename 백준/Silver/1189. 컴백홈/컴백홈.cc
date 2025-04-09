@@ -6,7 +6,6 @@ using namespace std;
 int r, c, k;
 vector<vector<char>> arr;
 vector<vector<bool>> visited;
-vector<pair<int, int>> path;
 int answer = 0;
 
 int dy[] = {0, 0, -1, 1};
@@ -18,12 +17,6 @@ void dfs(int y, int x, int d)
 
     if (y == 0 && x == c - 1 && d == k) // 종점이라면
     {
-        // cout << "d: " << d << ", path:" << endl;
-        // for (auto [y, x] : path)
-        // {
-        //     cout << "\t" << y << " : " << x << endl;
-        // }
-
         answer++;
         return;
     }
@@ -37,9 +30,7 @@ void dfs(int y, int x, int d)
         if (arr[ny][nx] == 'T' || visited[ny][nx]) continue;
 
         visited[ny][nx] = true;
-        path.push_back({ny, nx});
         dfs(ny, nx, d + 1);
-        path.pop_back();
         visited[ny][nx] = false;
     }
 }
