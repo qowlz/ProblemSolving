@@ -1,5 +1,5 @@
 #include <iostream>
-#include <map>
+#include <unordered_map>
 #include <algorithm>
 using namespace std;
 
@@ -10,17 +10,14 @@ int main() {
     int n;
     cin >> n;
 
-    map<int, int> m;
+    unordered_map<int, int> m;
+    int ans = 0;
     for (int i = 0; i < n; i++)
     {
         int a;
         cin >> a;
-        m[a]++;
+        ans = max(ans, ++m[a]);
     }
-
-    int ans = 0;
-    for (const auto& x : m)
-        ans = max(ans, x.second);
 
     cout << ans;
 
