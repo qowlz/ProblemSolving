@@ -36,18 +36,6 @@ void solve(int start, int total)
 {
     if (selected.size() == n / 2)
     {
-        // cout << "selected: ";
-        // for (auto x : selected)
-        // {
-        //     cout << x << ' ';
-        // }
-        // cout << endl;
-
-        // cout << "total: " << total << endl;
-
-        // auto other = getOtherScore();
-        // cout << "other total: " << other << endl;
-
         ans = min(ans, abs(total - getOtherScore()));
         return;
     }
