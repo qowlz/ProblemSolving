@@ -22,13 +22,14 @@ void dfs(int y, int x, int acc)
         int nx = x + dx[i];
         if (ny <= 0 || ny > r || nx <= 0 || nx > c) continue;
 
-        if (visited[board[ny][nx] - 'A']) continue;
+        int idx = board[ny][nx] - 'A';
+        if (visited[idx]) continue;
 
-        visited[board[ny][nx] - 'A'] = true;
+        visited[idx] = true;
 
         dfs(ny, nx, acc + 1);
 
-        visited[board[ny][nx] - 'A'] = false;
+        visited[idx] = false;
     }
 }
 
