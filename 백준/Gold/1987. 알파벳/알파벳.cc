@@ -5,7 +5,7 @@
 using namespace std;
 
 int r, c;
-vector<vector<char>> board;
+char board[21][21];
 bool visited[26];
 int ans = 1;
 
@@ -39,7 +39,6 @@ int main() {
 
     cin >> r >> c;
 
-    board.assign(r + 1, vector<char>(c + 1, '\0'));
     for (int i = 1; i <= r; i++)
     {
         for (int j = 1; j <= c; j++)
